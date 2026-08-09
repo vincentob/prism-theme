@@ -1,0 +1,41 @@
+{
+  "name": "@vincentob/prism-theme",
+  "version": "0.1.0",
+  "description": "Reusable visual tokens and React theme runtime.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "packageManager": "pnpm@11.17.0",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/vincentob/prism-theme.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
+  "files": [
+    "dist",
+    "src/tokens.css",
+    "README.md"
+  ],
+  "exports": {
+    "./react": {
+      "types": "./dist/theme.d.ts",
+      "import": "./dist/theme.js"
+    },
+    "./tokens.css": "./src/tokens.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.7.2"
+  }
+}

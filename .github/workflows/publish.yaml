@@ -7,7 +7,9 @@ on:
 
 permissions:
   contents: read
-  # Required for npm provenance attestation.
+  # Required for npm trusted publishing (OIDC) and provenance attestation.
+  # No long-lived npm token is stored anywhere: the registry exchanges this
+  # workflow's OIDC identity for a short-lived publish credential.
   id-token: write
 
 jobs:
@@ -34,7 +36,8 @@ jobs:
       - name: Build
         run: pnpm build
 
+      # Authentication comes from the OIDC exchange above, so no NODE_AUTH_TOKEN
+      # is set here. Requires a trusted publisher to be configured for this
+      # package on npmjs.com (Settings -> Trusted Publisher).
       - name: Publish
         run: pnpm publish --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

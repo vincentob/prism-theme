@@ -1,13 +1,23 @@
+/*
+ * Light mode uses warm paper neutrals. An earlier revision tinted them cyan
+ * (#f1f6f7 / #d9e6e9 / #183039), which reads as a cold clinical white on the
+ * data-dense consoles this theme is built for. Only the neutral scale is warm:
+ * accents stay on the cyan/prism/midnight hues defined below, so the accent
+ * choice still drives the character of a page.
+ *
+ * The HSL triples and the hex tokens are two views of one scale — keep them in
+ * step, otherwise a shadcn `border-border` sits cold next to a warm `--line`.
+ */
 :root {
   color-scheme: light;
-  --background: 195 26% 96%; --foreground: 201 31% 13%; --card: 0 0% 100%;
-  --card-foreground: 201 31% 13%; --border: 194 22% 86%; --primary: 184 73% 40%;
-  --primary-foreground: 0 0% 100%; --muted: 194 24% 93%; --muted-foreground: 198 13% 43%;
+  --background: 60 10% 96%; --foreground: 45 11% 7%; --card: 0 0% 100%;
+  --card-foreground: 45 11% 7%; --border: 51 13% 89%; --primary: 184 73% 40%;
+  --primary-foreground: 0 0% 100%; --muted: 50 17% 93%; --muted-foreground: 50 3% 35%;
   --accent: 187 52% 91%; --accent-foreground: 188 80% 24%;
-  --app-bg: #f1f6f7; --panel: #ffffff; --panel-raised: #f8fbfc; --panel-soft: #f2f7f8;
-  --line: #d9e6e9; --line-bright: #c8dcdf; --text: #183039; --text-2: #526b74;
-  --text-3: #82949b; --cyan: #0e9fab; --cyan-soft: rgba(14, 159, 171, .1);
-  --nav-bg: #ffffff; --deep-1: #ffffff; --deep-2: #f7fafb;
+  --app-bg: #f6f6f4; --panel: #ffffff; --panel-raised: #fdfdfb; --panel-soft: #faf9f7;
+  --line: #e7e6e0; --line-bright: #dcdad2; --text: #141310; --text-2: #5c5b56;
+  --text-3: #918f88; --cyan: #0e9fab; --cyan-soft: rgba(14, 159, 171, .1);
+  --nav-bg: #ffffff; --deep-1: #ffffff; --deep-2: #faf9f7;
   --accent-shadow: rgba(14, 159, 171, .18); --workspace-max-width: 1240px;
   --font-caption: 11px; --font-support: 12px;
 }

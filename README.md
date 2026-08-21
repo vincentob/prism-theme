@@ -6,6 +6,7 @@
 - 明暗两套模式 × `prism` / `midnight` 两套强调配色
 - 主题选择自动持久化到 `localStorage`
 - 令牌以 CSS 变量暴露，可直接对接 Tailwind CSS
+- 明色中性色为暖纸色，强调色独立于中性色
 
 ## 安装
 
@@ -76,6 +77,19 @@ function ThemeToggle() {
 ### 工作原理
 
 `ThemeProvider` 在 `useLayoutEffect` 中把状态同步到 `<html>` 上——切换 `.dark` class 并写入 `data-theme` / `data-accent` 属性，`tokens.css` 依据这三者的组合层叠出最终的 CSS 变量值。用 `useLayoutEffect` 而非 `useEffect` 是为了在首次绘制前完成写入，避免主题闪烁。
+
+## 中性色与强调色
+
+令牌分成两族，可以独立理解：
+
+| 族 | 令牌 | 说明 |
+| --- | --- | --- |
+| 中性色 | `--app-bg` `--panel` `--panel-raised` `--panel-soft` `--line` `--line-bright` `--text` `--text-2` `--text-3` | 页面底色、面板、描边和文字层级 |
+| 强调色 | `--cyan` `--cyan-soft` `--primary` `--accent` `--accent-shadow` | 由 `data-accent` 决定，`prism` / `midnight` 各一套 |
+
+明色模式的中性色是暖纸色（`#f6f6f4` / `#e7e6e0` / `#141310`）。数据密集的控制台会长时间停留在明色下，偏冷的中性色看久了发白发涩。暗色模式的中性色由各强调色自带，冷暖跟随配色本身。
+
+同一档中性色同时以 HSL 三元组（给 Tailwind / shadcn）和 hex（给手写 CSS）暴露，改动时两边要一起改，否则 `border-border` 会和 `--line` 冷暖不一致。
 
 ## 对接 Tailwind CSS
 

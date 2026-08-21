@@ -1,6 +1,6 @@
 {
   "name": "@vincentob/prism-theme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Reusable visual tokens and React theme runtime.",
   "license": "MIT",
   "author": "Vincent",
